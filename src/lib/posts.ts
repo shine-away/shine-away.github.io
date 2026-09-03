@@ -25,9 +25,9 @@ export interface TagInfo {
 }
 
 interface Frontmatter {
-  title?: string;
-  date?: string;
-  summary?: string;
+  title?: unknown;
+  date?: unknown;
+  summary?: unknown;
   tags?: unknown;
 }
 
@@ -44,6 +44,22 @@ function normalizeTags(value: unknown): string[] {
     .filter((tag) => tag.length > 0);
 }
 
+/**
+ * Dates arrive either as strings ("2026-09-02") or, when written without
+ * quotes, as Date objects because YAML parses timestamps eagerly. Both are
+ * accepted and reduced to a UTC date-only string, which matches how formatDate
+ * renders and keeps string sorting correct.
+ */
+function normalizeDate(value: unknown): string {
+  if (value instanceof Date) {
+    return Number.isNaN(value.getTime())
+      ? ""
+      : value.toISOString().slice(0, 10);
+  }
+
+  return typeof value === "string" ? value : "";
+}
+
 /** Maps a content file and its raw text to post metadata. Pure. */
 export function parsePost(fileName: string, raw: string): PostMeta {
   const data = matter(raw).data as Frontmatter;
@@ -53,7 +69,7 @@ export function parsePost(fileName: string, raw: string): PostMeta {
     slug: slugify(base),
     file: fileName,
     title: typeof data.title === "string" ? data.title : base,
-    date: typeof data.date === "string" ? data.date : "",
+    date: normalizeDate(data.date),
     summary: typeof data.summary === "string" ? data.summary : "",
     tags: normalizeTags(data.tags),
   };

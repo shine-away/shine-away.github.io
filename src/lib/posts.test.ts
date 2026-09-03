@@ -78,7 +78,22 @@ describe("parsePost", () => {
     expect(parsePost("a.mdx", raw).tags).toEqual([]);
   });
 
-  it("ignores a non-string date value", () => {
+  it("accepts an unquoted date, which YAML parses as a Date object", () => {
+    const raw = ["---", "date: 2026-09-02", "---", ""].join("\n");
+    expect(parsePost("a.mdx", raw).date).toBe("2026-09-02");
+  });
+
+  it("reduces a timestamp to a UTC date-only string", () => {
+    const raw = ["---", "date: 2026-09-02 13:45:00", "---", ""].join("\n");
+    expect(parsePost("a.mdx", raw).date).toBe("2026-09-02");
+  });
+
+  it("keeps a quoted date string as written", () => {
+    const raw = ["---", 'date: "2026-09-02"', "---", ""].join("\n");
+    expect(parsePost("a.mdx", raw).date).toBe("2026-09-02");
+  });
+
+  it("ignores a date value that is neither string nor date", () => {
     const raw = ["---", "date: 2026", "---", ""].join("\n");
     expect(parsePost("a.mdx", raw).date).toBe("");
   });
