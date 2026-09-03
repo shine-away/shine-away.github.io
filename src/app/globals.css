@@ -1,26 +1,62 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* next-themes uses a class on <html>, so drive the dark variant off that. */
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/*
+ * Code blocks.
+ *
+ * These rules are intentionally unlayered: unlayered declarations win over
+ * anything inside Tailwind's @layer utilities, which is what lets them override
+ * the typography plugin's default `pre` styling.
+ */
+[data-rehype-pretty-code-figure] pre {
+  overflow-x: auto;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  background-color: #f4f4f5;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.dark [data-rehype-pretty-code-figure] pre {
+  background-color: #18181b;
+}
+
+/*
+ * rehype-pretty-code is configured with dual themes and `keepBackground: false`,
+ * so tokens only carry --shiki-light / --shiki-dark custom properties. Map them
+ * to real declarations for each mode; without the light rule, light mode would
+ * render code with no syntax colors at all.
+ */
+[data-rehype-pretty-code-figure] [data-line] span {
+  color: var(--shiki-light);
+  font-weight: var(--shiki-light-font-weight, inherit);
+  font-style: var(--shiki-light-font-style, inherit);
+}
+
+.dark [data-rehype-pretty-code-figure] [data-line] span {
+  color: var(--shiki-dark);
+  font-weight: var(--shiki-dark-font-weight, inherit);
+  font-style: var(--shiki-dark-font-style, inherit);
+}
+
+code[data-line-numbers] {
+  counter-reset: line;
+}
+
+code[data-line-numbers] > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: #a1a1aa;
 }
