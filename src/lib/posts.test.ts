@@ -170,6 +170,14 @@ describe("collectTags", () => {
     ]);
   });
 
+  it("sorts equal-frequency tags by name", () => {
+    const tags = collectTags([
+      post({ slug: "a", tags: ["zebra", "alpha"] }),
+    ]);
+
+    expect(tags.map((tag) => tag.tag)).toEqual(["alpha", "zebra"]);
+  });
+
   it("groups spellings that share a slug", () => {
     const tags = collectTags([
       post({ slug: "a", tags: ["Next.js"] }),

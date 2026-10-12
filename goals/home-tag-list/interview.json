@@ -1,0 +1,48 @@
+{
+  "stage": "interview",
+  "title": "블로그 홈 태그 목록",
+  "goalSlug": "home-tag-list",
+  "questions": [
+    {
+      "id": "placement",
+      "prompt": "태그 목록을 홈 화면의 어느 위치에 둘까요?",
+      "description": "현재 홈은 블로그 소개 다음에 최근 글 목록이 이어집니다.",
+      "answerMode": "single-custom",
+      "recommendedAnswer": "블로그 소개와 최근 글 사이에 별도 ‘Tags’ 섹션으로 배치하면 소개 흐름을 유지하면서도 상단에서 쉽게 발견할 수 있습니다.",
+      "recommendedOptionIds": ["between-intro-and-posts"],
+      "options": [
+        { "id": "between-intro-and-posts", "label": "소개 아래, 최근 글 위에 별도 Tags 섹션" },
+        { "id": "before-intro", "label": "블로그 소개보다 위, 페이지 최상단" },
+        { "id": "inside-intro", "label": "블로그 소개 영역 안에 함께 표시" }
+      ],
+      "required": true
+    },
+    {
+      "id": "presentation",
+      "prompt": "각 태그를 어떤 형태로 보여줄까요?",
+      "description": "모든 태그는 클릭 시 기존 /tags/[tag] 페이지로 이동하며 작은 화면에서는 여러 줄로 자연스럽게 감쌉니다.",
+      "answerMode": "single-custom",
+      "recommendedAnswer": "홈의 간결한 디자인에 맞춰 #태그 이름만 링크 형태로 보여주는 것을 권장합니다.",
+      "recommendedOptionIds": ["names-only"],
+      "options": [
+        { "id": "names-only", "label": "#태그 이름만 표시" },
+        { "id": "with-count", "label": "#태그 이름과 게시글 수를 함께 표시" },
+        { "id": "pill", "label": "배경과 테두리가 있는 칩(pill) 형태" }
+      ],
+      "required": true
+    },
+    {
+      "id": "ordering",
+      "prompt": "태그 정렬 기준은 무엇으로 할까요?",
+      "description": "현재 태그 데이터 함수는 사용 빈도가 높은 순, 빈도가 같으면 이름순으로 반환합니다.",
+      "answerMode": "single-custom",
+      "recommendedAnswer": "자주 사용된 태그를 먼저 보여주도록 현재의 빈도순 정렬을 그대로 활용하는 것이 좋습니다.",
+      "recommendedOptionIds": ["frequency"],
+      "options": [
+        { "id": "frequency", "label": "사용 빈도 높은 순(동률은 이름순)" },
+        { "id": "alphabetical", "label": "이름순" }
+      ],
+      "required": true
+    }
+  ]
+}

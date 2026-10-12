@@ -1,12 +1,15 @@
 import Link from "next/link";
-import { getAllPosts } from "@/lib/posts";
+import { collectTags, getAllPosts } from "@/lib/posts";
 import { siteConfig } from "@/lib/site";
 import { PostList } from "@/components/post-list";
+import { TagList } from "@/components/tag-list";
 
 const RECENT_COUNT = 5;
 
 export default function Home() {
-  const posts = getAllPosts().slice(0, RECENT_COUNT);
+  const allPosts = getAllPosts();
+  const posts = allPosts.slice(0, RECENT_COUNT);
+  const tags = collectTags(allPosts);
 
   return (
     <div className="flex flex-col gap-12">
@@ -14,6 +17,8 @@ export default function Home() {
         <h1 className="text-xl font-semibold">{siteConfig.title}</h1>
         <p className="text-zinc-500">{siteConfig.description}</p>
       </section>
+
+      <TagList tags={tags} />
 
       <section className="flex flex-col gap-6">
         <div className="flex items-baseline justify-between">

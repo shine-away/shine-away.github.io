@@ -1,0 +1,53 @@
+{
+  "facts": [
+    {
+      "id": "fact-1",
+      "text": "홈 화면에는 블로그 소개 아래이자 최근 글 목록 위에 ‘Tags’ 섹션이 표시된다.",
+      "comment": "",
+      "recommendedAutomatedVerification": true,
+      "automatedVerification": true
+    },
+    {
+      "id": "fact-2",
+      "text": "Tags 섹션은 전체 게시글의 frontmatter에서 수집한 중복 없는 모든 태그를 표시한다.",
+      "comment": "",
+      "recommendedAutomatedVerification": true,
+      "automatedVerification": true
+    },
+    {
+      "id": "fact-3",
+      "text": "각 태그는 게시글 수 없이 ‘#태그이름’으로 표시되며 배경과 테두리가 있는 pill 형태의 링크다.",
+      "comment": "",
+      "recommendedAutomatedVerification": true,
+      "automatedVerification": true
+    },
+    {
+      "id": "fact-4",
+      "text": "태그 링크를 선택하면 기존의 해당 태그 페이지(/tags/[tag])로 이동한다.",
+      "comment": "",
+      "recommendedAutomatedVerification": true,
+      "automatedVerification": true
+    },
+    {
+      "id": "fact-5",
+      "text": "태그는 사용된 게시글 수가 많은 순으로 정렬되고, 사용 수가 같으면 이름순으로 정렬된다.",
+      "comment": "",
+      "recommendedAutomatedVerification": true,
+      "automatedVerification": true
+    },
+    {
+      "id": "fact-6",
+      "text": "태그 pill 목록은 좁은 화면에서 잘리거나 가로 스크롤을 만들지 않고 다음 줄로 자연스럽게 배치되며 라이트·다크 테마에서 읽을 수 있다.",
+      "comment": "",
+      "recommendedAutomatedVerification": false,
+      "automatedVerification": false
+    },
+    {
+      "id": "fact-7",
+      "text": "사용된 태그가 하나도 없으면 홈 화면에서 빈 Tags 섹션을 표시하지 않는다.",
+      "comment": "",
+      "recommendedAutomatedVerification": true,
+      "automatedVerification": true
+    }
+  ]
+}
