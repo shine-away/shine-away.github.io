@@ -20,31 +20,42 @@ tags: ["mamalog", "product", "개발기"]
 
 앱을 만들기 전에는 주차별 할 일과 준비물 목록을 각각 스프레드시트로 관리했다. 아래 화면들은 흩어진 기록 중 엑셀에 있던 일부다. 일정과 질문, 남편과 나눈 이야기는 다시 캘린더·메모·카카오톡에 흩어져 있었다.
 
-<figure>
-  <img
-    src="/images/mamalog/before01-excel.png"
-    alt="임신 주차별 준비 항목과 완료 여부를 체크박스로 관리하던 스프레드시트"
-    width="1120"
-    height="1622"
-    loading="lazy"
-  />
-  <figcaption>
-    주차별 준비 항목과 완료 여부를 관리하던 스프레드시트
-  </figcaption>
-</figure>
+<div
+  style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+    gap: "1rem",
+    alignItems: "start",
+  }}
+>
+  <figure style={{ margin: 0 }}>
+    <img
+      src="/images/mamalog/before01-excel.png"
+      alt="임신 주차별 준비 항목과 완료 여부를 체크박스로 관리하던 스프레드시트"
+      width="1120"
+      height="1622"
+      loading="lazy"
+      style={{ margin: 0 }}
+    />
+    <figcaption>
+      주차별 준비 항목과 완료 여부를 관리하던 스프레드시트
+    </figcaption>
+  </figure>
 
-<figure>
-  <img
-    src="/images/mamalog/before02-excel.png"
-    alt="출산 준비물의 카테고리, 필요도, 수량과 구매 여부를 관리하던 스프레드시트"
-    width="1380"
-    height="1664"
-    loading="lazy"
-  />
-  <figcaption>
-    준비물의 필요도와 수량, 구매 여부를 관리하던 스프레드시트
-  </figcaption>
-</figure>
+  <figure style={{ margin: 0 }}>
+    <img
+      src="/images/mamalog/before02-excel.png"
+      alt="출산 준비물의 카테고리, 필요도, 수량과 구매 여부를 관리하던 스프레드시트"
+      width="1380"
+      height="1664"
+      loading="lazy"
+      style={{ margin: 0 }}
+    />
+    <figcaption>
+      준비물의 필요도와 수량, 구매 여부를 관리하던 스프레드시트
+    </figcaption>
+  </figure>
+</div>
 
 그래서 이런 생각으로 앱을 만들기 시작했다.
 
