@@ -20,6 +20,7 @@
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "rehype-pretty-code": "0.14.1",
+    "remark-frontmatter": "5.0.0",
     "remark-gfm": "4.0.1"
   },
   "devDependencies": {
